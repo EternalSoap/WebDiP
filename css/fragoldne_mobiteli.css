@@ -1,0 +1,189 @@
+/*ip3 portrait*/
+@media screen and (width:320px) and (height:480px) and (orientation:portrait)
+{
+    html
+    {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    body
+    {
+        width: 80%;
+        
+    }
+    nav
+    {
+        width: 95%;
+        left: 0px;
+        right: 0px;
+        
+    }
+    .divContent
+    {
+        width: 95%;
+        margin: auto;
+        padding:10px;
+        left: 0px;
+        right: 0px;
+        float: left;
+        
+    }
+    
+    
+    td:nth-child(n+4) span
+    {
+        display: none;
+    }
+    
+   
+    th:nth-child(n+4) span
+    {
+        display: none;
+    }
+    
+}
+
+/* ip3 landscape */
+@media screen and (width:480px) and (height:320px) and (orientation:landscape)
+{
+    html
+    {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        height: 100%;
+        width: 80%;
+        
+    }
+    body
+    {
+        padding: 0px;
+        margin: 0px;
+        width: 80%;
+    }
+    
+    .divContent
+    {
+        width: 50%;
+        margin: 0px;
+        padding: 0px;
+        
+        float:none;
+    }
+    header
+    {
+        margin: 10px;
+        padding: 10px;
+    }
+    nav
+    {
+        margin: 0px ;
+        padding: 0px;
+        left: 0px;
+    }
+}
+
+/*ip5 portrait*/
+@media screen and (width:640px) and (height:1136px) and (orientation:portrait) , (-webkit-min-device-pixel-ratio:2 ) and (orientation:portrait)
+{
+   html
+    {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    body
+    {
+        width: 80%;
+        
+    }
+    nav
+    {
+        width: 95%;
+        left: 10px;
+        right: 0px;
+        
+    }
+    .divContent
+    {
+        width: 95%;
+        margin: auto;
+        padding:10px;
+        left: 20px;
+        right: 0px;
+        float: left;
+        
+    }
+   td:nth-child(n+4) 
+    {
+        display: none;
+    }
+    
+   
+   th:nth-child(n+4) 
+    {
+        display: none;
+    }
+    .nope
+    {
+        display:none;
+    }
+    .row
+    {
+        font-size: 10pt;
+    }
+}
+
+@media screen and (width:1136px) and (height:640px) and (orientation:landscape) , (-webkit-min-device-pixel-ratio:2 ) and (orientation:landscape)
+{
+   html
+    {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        height: 100%;
+        width: 100%;
+        
+    }
+    body
+    {
+        width: 95%;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .divContent
+    {
+        width: 70%;
+        
+        left: 20px;
+        margin:0px;
+        padding:0px;
+        
+        float:none;
+    }
+    header
+    {
+        margin: 10px;
+        padding: 10px;
+    }
+    nav
+    {
+        margin: 0px ;
+        padding: 0px;
+        left: 10px;
+        right: 10px;
+        width: 25%;
+    
+    }
+    .divContent
+    {
+        overflow-x: hidden;
+    }
+    
+    
+    
+}
+
+

@@ -1,0 +1,315 @@
+html
+{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #BDBDBD;
+}
+body
+{
+    
+    width: 100%;
+    height: 100%;
+    background-color: #BDBDBD;
+    margin : 0px;
+}
+
+header
+{
+    width: 100%;
+    background-color: white;
+    text-align: left;
+    
+    
+    position: relative;
+    
+    
+}
+
+.h1Header
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.pHeader
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+nav
+{
+    
+    float: left;
+    background-color: #BDBDBD;
+    position: relative;
+    width: 15%;
+    min-width: 125px;
+    clear: both;
+    
+    border: solid thin black;
+    list-style-type: none;
+    
+}
+
+nav
+{
+    min-height:85%;
+}
+
+.greenP
+{
+    color: green;
+}
+
+.error
+{
+    background-color: salmon;
+}
+
+.selected
+{
+    border:solid thin black;
+}
+
+.divContent
+{
+    
+    width: 84.5%;
+    height: 85%;
+    position: relative;
+   /* border-radius: 20px;    */
+    background-color: #EDEDED;
+    float:left;
+    overflow: scroll;
+    left: 2px;
+    
+    text-align: justify;
+}
+
+footer
+{
+   clear: both;
+   position: relative;
+   bottom: 1px;
+   float: left;
+   text-align: center;
+   width: 100%;
+   height:8%;
+}
+
+
+.slike
+{
+    width: 50px;
+    height: 50px;
+    display: block;
+    float: left;
+    clear: both;
+}
+
+.imgDiv
+{
+    float: left;
+    padding: 20px;
+    margin: 20px;     
+    text-align: center;
+}
+
+#divRegistracija
+{
+    margin: 2px;
+    padding-left: 0%;
+    
+    
+}
+
+#divPrijava
+{
+    width: 99.7%;
+    
+}
+
+.figure
+{
+    padding: 20px;
+    margin: 20px;
+    float: left;
+    clear: right;
+    text-align: center;
+    border: solid thin black;
+    /*border-radius: 15px;*/
+    
+}
+figcaption
+{
+    font-family: "Times New Roman";
+    font-size: 20pt;
+    color: #303030;
+    text-align: center;
+}
+#audio
+{
+    clear: left;
+}
+
+.video
+{
+    padding : 1%;
+    margin: 1%;
+    float: left;
+    clear: left;
+    text-align: center;
+    
+}
+#sameLine,#sameLine2
+{
+    clear: right;
+}
+li
+{
+    margin: 5px;
+    padding: 5px;
+    
+}
+
+.link
+{
+    color: black;
+    text-decoration: none;
+}
+
+.linkMain
+{
+    color : black;
+    border : thin solid black;
+    text-align: right;
+    margin-left: 10px;
+    margin-right: 1px;
+}
+
+.PRSwitch
+{
+    text-align: right;
+    clear: left;
+}
+
+a
+{
+    color:blue;
+    text-decoration: none;
+}
+
+.omiljenoLink
+{
+    color: blue;
+}
+
+.omiljenoLink:visited{color: darkblue}
+
+.fieldsetReg
+{
+    
+    color: #303030;
+  /*  border-radius: 15px;*/
+}
+
+.tablica
+{
+    
+    border: solid black;
+    
+}
+
+ul
+{
+    list-style-type: square;
+    
+}
+
+dd
+{
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#form2
+{
+    font-family: "Times New Roman";
+    color: #303030;
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    padding-bottom: 2px;
+}
+
+.labelReg
+{
+    margin: 1px;
+    padding: 1px;
+    text-decoration: underline;
+}
+
+.inputReg
+{
+    margin: 1px;
+    padding: 1px;
+    font-family: "Times New Roman";
+}
+
+#form1
+{
+    font-family: "Times New Roman";
+    color: #303030;
+    text-align: center;
+    position: relative;
+    
+    background-color: #FFFFFF;
+ /*   border-radius: 15px;*/
+    padding: 0.5%;
+    margin: 0.5%;
+    height: 95%;
+    
+}
+
+input
+{
+    margin: 1px;
+    padding: 1px;
+    font-family: "Times New Roman";
+}
+
+label
+{
+    margin: 1px;
+    padding: 1px;
+    text-decoration: underline;
+}
+
+td:hover
+{
+   background-color: lightgrey;
+}
+
+#listNav
+{
+    list-style-type: none;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+.listNavigation
+{
+    list-style-type: none;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.row
+{
+    font-size: 15pt;
+}

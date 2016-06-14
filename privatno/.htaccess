@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Ogranicen Pristup"
+AuthUserFile /var/www/WebDiP/2015_projekti/WebDiP2015x023/privatno/.htpasswd
+Require valid-user
