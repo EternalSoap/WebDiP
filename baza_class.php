@@ -2,6 +2,20 @@
 
 
 
+
+function dnevnik($query)
+{
+    $db = new DataBase();
+    
+    $msqli = $db->dbConnect();
+    
+    $query = $msqli->real_escape_string($query);
+    
+    $date = time();
+        
+}
+
+
 class DataBase
 {
     
@@ -27,6 +41,7 @@ class DataBase
     function dbSelect($query)
     {
         $result = $this->conn->query($query);
+        dnevnik($query);
         if($this->conn->connect_errno)
         {
             echo "Pogreska kod upita " . $this->conn->errno;
@@ -37,6 +52,7 @@ class DataBase
     function dbQuery($query)
     {
         $this->conn->query($query);
+        dnevnik($query);
         if($this->conn->connect_errno)
         {
             echo 'Pogreska kod upita ' . $this->conn->errno;
@@ -52,3 +68,6 @@ class DataBase
     }
     
 }
+
+
+dnevnik('select * from Korisnik');

@@ -269,8 +269,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="./css/fragoldne.css" rel="stylesheet" type="text/css" media="screen">
-        <link href="fragoldne_print.css" rel="stylesheet" type="text/css" media="print">
-        <link href="fragoldne_mobiteli.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="./css/fragoldne_print.css" rel="stylesheet" type="text/css" media="print">
+        <link href="./css/fragoldne_mobiteli.css" rel="stylesheet" type="text/css" media="screen">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -397,7 +397,8 @@ and open the template in the editor.
                 <br>
                 
                 <label class="labelReg" for="robot">Nisam robot:</label>
-                <div class="g-recaptcha" data-sitekey="6LcQ5R4TAAAAALEupQ_c48HXVx5lbbVlrs79TZRM"></div>
+                <div class="g-recaptcha" data-sitekey="6LcQ5R4TAAAAALEupQ_c48HXVx5lbbVlrs79TZRM" id="recaptcha"></div>
+                
                 <div id="divRobot"></div>
                  
                     

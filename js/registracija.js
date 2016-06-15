@@ -44,7 +44,7 @@ $(":input").focusout(function(){
 
 $("#form2").submit(function(event){
     
-    
+    window.error = 0;
     $ime = $("#ime");
     $prezime = $("#prez");
     $korime = $("#korime");
@@ -58,6 +58,7 @@ $("#form2").submit(function(event){
     $adresa = $("#adresa");
     $broj = $("#broj");
     $grad = $("#grad");
+    
     
     
     
@@ -206,13 +207,15 @@ $("#form2").submit(function(event){
     {
       $("#divRobot").text("Roboti se ne mogu registrirati");
       window.error =1;
+      
     }
     else
     {
-        $("#divRobot").text("");
+       $("#divRobot").text("");
     }
      if(window.error === 1)
      {
+         grecaptcha.reset();
          return false;
      }
      else

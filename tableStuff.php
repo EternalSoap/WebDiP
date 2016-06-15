@@ -28,18 +28,25 @@ function getTableData($query,$numItems,$order,$sort,$search,$first)
     
     for($i=0;$i<$max;$i++)
     {
+        
         if($i < $first)
         {
+            $row = $result->fetch_assoc();
             continue;
         }
-        $row = $result->fetch_assoc();
+        else
+        {
+            $row = $result->fetch_assoc();
+        }
+        
         if($search !=='')
         {
             foreach($row as $val)
             {
-                if(strpos($val, $search)!==false)
+                if(strpos(strtolower($val), strtolower($search))!==false)
                 {
                     array_push($returnArray, $row);
+                    break;
                 }
             }
         }

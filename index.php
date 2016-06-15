@@ -20,8 +20,14 @@ function dbCheck()
 {
     include_once 'baza_class.php';
     $db = new DataBase();
-    $numTries = getConfig("numtries");
-    
+    if(getConfig('numtries') == 0)
+    {
+        $numTries = 5;
+    }
+    else
+    {
+        $numTries = getConfig("numtries");
+    }
     
      if($_SERVER["REQUEST_METHOD"] == "POST")
         {
@@ -47,10 +53,15 @@ function dbCheck()
                 error("Pogresno korisnicko ime ili lozinka ");
                 return false;
             }
-            
+           
+          
             $row = $result->fetch_assoc();
-            echo $row["BrojPokusaja"];
-            if($row["BrojPokusaja"] >$numTries)
+            $numTriesUser = $row["BrojPokusaja"];
+             echo $numTries;
+             echo $numTriesUser;
+             
+             
+            if( intval($numTriesUser)>intval($numTries))
             {
                 error("Korisnički račun je zaključan");
                 return false;
@@ -86,9 +97,9 @@ function dbCheck()
         }
 }
 
-if(dbCheck() == true)
+if(dbCheck() === true)
 {
-    
+    echo error;
     header('Location: https://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x023/glavna.php');
     exit();
 }
@@ -113,8 +124,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="./css/fragoldne.css" rel="stylesheet" type="text/css" media="screen">
-        <link href="fragoldne_print.css" rel="stylesheet" type="text/css" media="print">
-        <link href="fragoldne_mobiteli.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="./css/fragoldne_print.css" rel="stylesheet" type="text/css" media="print">
+        <link href="./css/fragoldne_mobiteli.css" rel="stylesheet" type="text/css" media="screen">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
@@ -140,9 +151,9 @@ and open the template in the editor.
         <div class="divContent" id="divPrijava">
             
             <form id="form1" method="post" name="form1" action="index.php" novalidate="">
-                <p><label class="labelReg" for="korime">Korisničko ime: </label>
+                <p><label class="labelReg" for="korime">Korisničko ime: </label><br>
                 <input class="inputReg" type="text" id="korime" name="korime" placeholder="korisničko ime" autofocus="autofocus" required="required"><br>
-                <label class="labelReg"  for="lozinka">Lozinka: </label>
+                <label class="labelReg"  for="lozinka">Lozinka: </label><br>
                 <input class="inputReg" type="password" id="lozinka" name="lozinka" placeholder="lozinka" required="required"><br>
                 <input class="inputReg" type="checkbox" id="zapamti" name="zapamti"> <label>Zapamti me</label><br>
                 
@@ -158,6 +169,8 @@ and open the template in the editor.
                 
                 
                 <label class="labelReg">Zaboravljena lozinka?</label><br><a href="reset.php">Resetiraj lozinku </a><br>
+                
+                <label class="labelReg">Pregled bez registracije?</label><br><a href="glavna.php">Demo </a><br>
            
             </form>
             

@@ -43,7 +43,7 @@ if(isset($_GET["func"]))
         
         session_unset();
         session_destroy();
-        header('Location: https://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x023/glavna.php');
+        header('Location: https://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x023/index.php');
         exit();
     }
 }

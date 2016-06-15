@@ -1,9 +1,0 @@
-//broj pokusaja prijave
-numtries : 5
-//broj elemenata po stranici
-numitems : 10
-//vremenski pomak
-shiftvalue:100
-shiftused:1
-//trajanje aktivacijskog koda (sati)
-duration : 10

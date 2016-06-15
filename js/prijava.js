@@ -74,11 +74,7 @@ function readCookie(name) {
 }
 
 
-function getUserType($korime, $lozinka)
-{
-    
-    
-}
+
 
 
 function uneseno(object)
