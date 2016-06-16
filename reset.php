@@ -2,6 +2,7 @@
 
 $error = '';
 require 'baza_class.php';
+include 'Dnevnik.php';
 
 function error($string)
     {
@@ -22,10 +23,11 @@ function dbCheck($korime)
             
             if($result->num_rows !=1)
             {
+                dnevnik($query1,'Resetiranje lozinke - korisnik ne postoji');
                 error("Korisnik ne postoji ");
                 return false;
             }
-            
+            dnevnik($query,'Resetiranje lozinke - korisnik postoji');
             $row = $result->fetch_assoc();
             return $row;
             
@@ -59,9 +61,11 @@ function dbInsert($newPass,$korime)
         $result = $db->dbQuery($query);
         if($result ===false)
         {
+            dnevnik($query,'Resetiranje lozinke - pogreška');
             error("Pogreška kod pristupanja bazi");
             return false;
         }
+        dnevnik($query,'Resetiranje lozinke - uspjeh');
         return true;
         
         

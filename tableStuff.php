@@ -11,7 +11,7 @@ function getTableData($query,$numItems,$order,$sort,$search,$first)
     $db->dbConnect();
     $query.=" order by ".$order . " ".($sort==1?'desc':'asc').";";
     
-    
+    dnevnik($query,"Generiranje tablice");
     
     $result = $db->dbSelect($query);
     $numRows = $result->num_rows;
@@ -78,6 +78,9 @@ function getNumRows($table,$numItems)
     $db = new DataBase();
     $db->dbConnect();
     $result = $db->dbSelect($query);
+    
+    dnevnik($query,'Generiranje straničenja');
+    
     $db->dbDisconnect();
     
     $num = $result->num_rows/$numItems;

@@ -1,5 +1,5 @@
 <?php
-
+include_once 'Dnevnik.php';
 include_once 'baza_class.php';
 
     
@@ -14,11 +14,12 @@ function UserTypeCheck ($korime){
         $db->dbDisconnect();
         if($result->num_rows!==1)
         {
-            echo json_encode("-1");
+            dnevnik($query,'Provjera tipa korisnika - ne postoji');
+            return -1;
             
         }
-        $assocResult = [];
-       
+        
+        dnevnik($query,'Provjera korisničkog imena - postoji');
         return $result->fetch_assoc();
         
 }

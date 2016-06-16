@@ -23,7 +23,8 @@ function dbCheck()
     
     if($result->num_rows ===0)
     {
-        error("Pogresan aktivacijski kod ");
+        dnevnik($query1,'Aktivacija - pogrešan aktivacijski kod');
+        error("Pogrešan aktivacijski kod ");
         return false;
     }
         
@@ -77,6 +78,7 @@ function dbCheck()
         $query2 = "update Korisnik set Aktivan = 1 where AktivacijskiKod = '".$kod."';";
         
         $result = $db->dbQuery($query2);
+        dnevnik($query1,'Aktivacija');
         
         $db->dbDisconnect();
         return true;

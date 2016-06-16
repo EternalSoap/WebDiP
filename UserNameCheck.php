@@ -1,11 +1,6 @@
 <?php
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require 'baza_class.php';
+include 'Dnevnik.php';
 if($_SERVER["REQUEST_METHOD"]==="POST")
 {
     $korime = $_POST["korime"];
@@ -17,10 +12,15 @@ if($_SERVER["REQUEST_METHOD"]==="POST")
     $result = $db->dbSelect($query);
     $db->dbDisconnect();
     if($result->num_rows ==0)
+    {
+        dnevnik($query,'Provjera korisničkog imena - ne postoji');
         echo json_encode("0");
+    }
     else
+    {
+        dnevnik($query,'Provjera korisničkog imena - postoji');
         echo json_encode("1");
-   
+    }
 }
 
 

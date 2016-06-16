@@ -9,6 +9,7 @@ $error = '';
 include 'UserTypeCheck.php';
 include 'cookies.php';
 include 'fileStuff.php';
+include_once 'Dnevnik.php';
 
 function error($string)
 {
@@ -50,20 +51,24 @@ function dbCheck()
                 {
                     error("Pogreška kod pristupa bazi");
                 }
+                dnevnik($query1,'Neuspjela prijava');
                 error("Pogresno korisnicko ime ili lozinka ");
                 return false;
             }
+            dnevnik($query1,'Uspješna prijava');
+             
+            
            
           
             $row = $result->fetch_assoc();
             $numTriesUser = $row["BrojPokusaja"];
-             echo $numTries;
-             echo $numTriesUser;
+             
              
              
             if( intval($numTriesUser)>intval($numTries))
             {
                 error("Korisnički račun je zaključan");
+                dnevnik($query2,'Zaključan korisnički račun');
                 return false;
             }
             

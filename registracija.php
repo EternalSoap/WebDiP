@@ -1,5 +1,6 @@
 <?php
     include 'VirtualnoVrijeme.php';
+    include 'dnevnik.php';
     $error ='';
     function error($string)
     {
@@ -179,18 +180,21 @@
         
         if($result->num_rows == 1)
         {
+            dnevnik($query,'Registracija - korisničko ime postoji');
             error("Korisnicko ime postoji");
             return false;
         }
         
         if($result2->num_rows == 1)
         {
+            dnevnik($query2,'Registracija - email postoji');
             error( "Email vec postoji ");
             return false;
         }
         
         if($result3->num_rows == 1)
         {
+            dnevnik($query3,'Registracija - kod postoji');
             error( "Kod vec postoji");
             return false;
         }
@@ -209,9 +213,11 @@
         
         if($resultInsert === false)
         {
+            dnevnik($dodajKorisnika,'Registracija - pogreška kod upisa u bazu' );
             error("Pogreska kod upisa u bazu");
             return false;
         }
+        dnevnik($dodajKorisnika,'Registracija');
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         $mailSent = mail(
@@ -222,6 +228,7 @@
                 );
         if($mailSent === false)
         {
+            
             error("Greska kod slanja maila");
             return false;
         }
