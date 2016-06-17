@@ -3,6 +3,7 @@
 header('Content-type: text/html; charset=utf-8');
 include 'baza_class.php';
 include 'fileStuff.php';
+include 'Dnevnik.php';
 
 //order je ime stupca po kojem se sortira, sort je 0(asc) ili 1(desc)
 function getTableData($query,$numItems,$order,$sort,$search,$first)
@@ -63,6 +64,29 @@ function getTableData($query,$numItems,$order,$sort,$search,$first)
     
 }
 
+function getHeaders($table){
+    $db = new DataBase();
+
+    $query = 'show columns from '.$table;
+
+    $db->dbConnect();
+    $result = $db->dbSelect($query);
+    $db->dbDisconnect();
+
+    dnevnik($query,'Dohvaćanje zaglavlja');
+
+    $result_array = [];
+
+
+    while($row = mysqli_fetch_array($result))
+    {
+        array_push($result_array, $row[0]);
+    }   
+
+    echo json_encode($result_array);
+    return $result_array;
+}
+
 
 function getNumRows($table,$numItems)
 {
@@ -88,6 +112,134 @@ function getNumRows($table,$numItems)
     
 }
 
+function getTables()
+{
+    $query = 'show tables';
+    $db = new DataBase();
+    $db ->dbConnect();
+    $result = $db->dbSelect($query);
+    $result_array = [];
+    while($row = mysqli_fetch_array($result))
+    {
+        array_push($result_array,$row[0]);
+    }
+    dnevnik($query,'Dohvaćanje tablica');
+    echo json_encode($result_array);
+    
+}
+
+
+function delete($id,$table)
+{   
+    $query = "delete from ".$table." where id".$table." = ".$id." ;";
+    $db = new DataBase();
+    $db ->dbConnect();
+    
+    $result = $db->dbQuery($query);
+    
+    if($result)
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje uspješno');
+        echo json_encode('1');
+    }
+    else
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje neuspješno');
+        echo json_encode('0');
+    }
+}
+
+function insert($table, $data_array)
+{
+    
+    $query = "insert into ".$table." values (default,";
+    
+    $numVals = count($data_array);
+    $currVal = 0;
+    foreach($data_array as $data)
+    {
+        $currVal++;
+        if($currVal == $numVals)
+        {
+            $query.="'".$data."'";
+        }
+        else
+        {
+            $query.="'".$data."',";
+        }
+        
+    }
+    $query.=");";
+    echo $query;
+    
+    $db = new DataBase();
+    $db ->dbConnect();
+    $result = $db->dbQuery($query);
+    
+    if($result)
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Dodavanje uspješno');
+        echo json_encode('1');
+    }
+    else
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Dodavanje neuspješno');
+        echo json_encode('0');
+    }
+    
+    
+}
+
+function update($id, $data,$table)
+{
+    $headers = getHeaders($table);
+    $query = "update ".$table." set ";
+    for($i=0;$i<count($headers)-1;$i++)
+    {
+        if($i+2 === count($headers))
+        {
+            $query.=$headers[$i+1]." = "."'".$data[$i]."'". " ";
+        }
+        else
+        {
+            $query.=$headers[$i+1]." = "."'".$data[$i]."'". ", ";
+        }
+       
+        echo $headers[$i];
+        echo $data[$i];
+        
+    }
+    $query.="where id".$table." = '".$id."';";
+    echo '<br>'.$query;
+    $db = new DataBase();
+    $db->dbConnect();
+    $result = $db->dbQuery($query);
+    
+    if($result)
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Ažurianje uspješno');
+        echo json_encode('1');
+    }
+    else
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Ažuriranje neuspješno');
+        echo json_encode('0');
+    }
+    
+}
+
+
+function insertWeak(){}
+function deleteWeak($table,$linkedTable1,$linkedTable2,$id1,$id2)
+    {
+        
+    }
 
 if(isset($_POST['func']))
 {
@@ -105,7 +257,40 @@ if(isset($_POST['func']))
             getNumRows($_POST['table'],$_POST['numItems']);
         }
     }
+    if(func ==='getHeaders')
+    {
+        if(isset($_POST['table']))
+        {
+            getHeaders($_POST['table']);
+        }
+    }
+    
+    if(func==='insert')
+    {
+        if(isset($_POST['table']) && isset($_POST['data']))
+        {
+            insert($_POST['table'], $_POST['data']);
+        }
+    }
+    if(func ==='update')
+    {
+        if(isset($_POST['table']) && isset($_POST['id']) && isset($_POST['data']))
+        {
+            update($_POST['id'], $_POST['data'], $_POST['table']);
+        }
+    }
+    if(func ==='delete')
+    {
+        if(isset($_POST['table']) && isset($_POST['id']))
+        {
+            delete($_POST['id'],$_POST['table']);
+        }
+    }
+    
+    if(func ==='getTables')
+    {
+        getTables();
+    }
+    
 }
-
-
 

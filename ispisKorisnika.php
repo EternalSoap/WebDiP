@@ -35,7 +35,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             
         </header>
        
-        
+        <nav id = 'nav'>
+            
+        </nav>
         
         
         <div class="divContent" id="divIspis">

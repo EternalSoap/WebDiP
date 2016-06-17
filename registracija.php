@@ -298,7 +298,7 @@ and open the template in the editor.
         </header>
          
         
-        <nav>
+        <nav id = 'nav'>
             
         </nav>
         

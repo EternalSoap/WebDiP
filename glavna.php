@@ -37,7 +37,8 @@
             </div>
             
         </header>
-        <nav>
+        
+        <nav id = 'nav'>
             
         </nav>
         

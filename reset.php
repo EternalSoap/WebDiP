@@ -133,7 +133,9 @@ if(isset($_POST['korime']))
            
         </header>
        
-        
+        <nav id = 'nav'>
+            
+        </nav>
         
         
         <div class="divContent" id="divReset">

@@ -28,7 +28,9 @@
            
         </header>
        
-        
+        <nav id = 'nav'>
+            
+        </nav>
         
         
         <div class="divContent" >
