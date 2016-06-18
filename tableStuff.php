@@ -238,6 +238,24 @@ function update($id, $data,$table)
 function insertWeak(){}
 function deleteWeak($table,$linkedTable1,$linkedTable2,$id1,$id2)
     {
+        $query = "delete from $table where ".$linkedTable1."_id".$linkedTable1." = ".$id1. " and ".$linkedTable2."_id".$linkedTable2." = ".$id2.";";
+        
+        $db=new DataBase();
+        $db->dbConnect();
+        
+        $result = $db->dbQuery($query);
+        if($result)
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje uspješno');
+        echo json_encode('1');
+    }
+    else
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje neuspješno');
+        echo json_encode('0');
+    }
         
     }
 
@@ -257,7 +275,7 @@ if(isset($_POST['func']))
             getNumRows($_POST['table'],$_POST['numItems']);
         }
     }
-    if(func ==='getHeaders')
+    if($func ==='getHeaders')
     {
         if(isset($_POST['table']))
         {
@@ -265,21 +283,21 @@ if(isset($_POST['func']))
         }
     }
     
-    if(func==='insert')
+    if($func==='insert')
     {
         if(isset($_POST['table']) && isset($_POST['data']))
         {
             insert($_POST['table'], $_POST['data']);
         }
     }
-    if(func ==='update')
+    if($func ==='update')
     {
         if(isset($_POST['table']) && isset($_POST['id']) && isset($_POST['data']))
         {
             update($_POST['id'], $_POST['data'], $_POST['table']);
         }
     }
-    if(func ==='delete')
+    if($func ==='delete')
     {
         if(isset($_POST['table']) && isset($_POST['id']))
         {
@@ -287,9 +305,16 @@ if(isset($_POST['func']))
         }
     }
     
-    if(func ==='getTables')
+    if($func ==='getTables')
     {
         getTables();
+    }
+    if($func ==='weakDelete')
+    {
+        if(isset($_POST['table']) && isset($_POST['linkedTable1']) && isset($_POST['linkedTable2']) && isset($_POST['id1']) && isset($_POST['id2']))
+        {
+            deleteWeak($_POST['table'],$_POST['linkedTable1'],$_POST['linkedTable2'],$_POST['id1'],$_POST['id2']);
+        }
     }
     
 }

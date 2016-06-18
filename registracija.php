@@ -1,6 +1,6 @@
 <?php
     include 'VirtualnoVrijeme.php';
-    include 'dnevnik.php';
+    include 'Dnevnik.php';
     $error ='';
     function error($string)
     {
@@ -284,6 +284,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script type="text/javascript" src="./js/registracija.js"></script>
+        
        
     </head>
      <body>
@@ -298,9 +299,7 @@ and open the template in the editor.
         </header>
          
         
-        <nav id = 'nav'>
-            
-        </nav>
+       
         
         
         <div class="divContent" id="divRegistracija">

@@ -62,7 +62,7 @@ function dbCheck()
           
             $row = $result->fetch_assoc();
             $numTriesUser = $row["BrojPokusaja"];
-             
+            $id = $row['idKorisnik'];
              
              
             if( intval($numTriesUser)>intval($numTries))
@@ -97,6 +97,7 @@ function dbCheck()
             }
             session_start();
             $_SESSION['UserType'] = $userType;
+            $_SESSION['UserID'] = $id;
             
             return true;
         }
@@ -135,6 +136,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
         <script type="text/javascript" src="./js/prijava.js"></script>
+        
         
         
     </head>

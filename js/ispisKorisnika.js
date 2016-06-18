@@ -137,7 +137,7 @@ function getData(query,numItems,order,sort,search,first,$callback)
     
     
     $.ajax({
-        url:'./tableStuff.php',
+        url:'../tableStuff.php',
         type: 'post',
         datatype: 'json',
         data:{func:'getTableData',
@@ -172,7 +172,7 @@ function getData(query,numItems,order,sort,search,first,$callback)
 function getNumRows(table,numItems,$callback)
 {
     $.ajax({
-        url:'./tableStuff.php',
+        url:'../tableStuff.php',
         type: 'post',
         datatype:'json',
         data:{func:'getNumRows',
@@ -204,7 +204,7 @@ $(document).ready(function(){
     
     
     $.ajax({
-        url:'./tableStuff.php',
+        url:'../tableStuff.php',
         type: 'post',
         datatype: 'json',
         data:{func:'getTableData',

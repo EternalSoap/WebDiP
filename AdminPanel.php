@@ -15,25 +15,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
         <script type="text/javascript" src="./js/pomak.js"></script>
-        <script type="text/javascript" src="./js/odjava.js"></script>
+        <script type="text/javascript" src="./js/userAccounts.js"></script>
+        
+        
+        
     </head>
     <body>
-        <header>
-            
-            <h1 class="h1Header">Admin Panel</h1>
-            <br/> 
-            <div id="PRSwitch" class="PRSwitch">
-                
-            </div>
-           
-        </header>
-       
-        <nav id = 'nav'>
-            
-        </nav>
+              
         
-        
-        <div class="divContent" >
+        <div class="divReplacableContent" >
             
             <form id="form1" method="post" name="form1" action="AdminPanel.php" novalidate="">
                
@@ -49,14 +39,33 @@
                     
                 </fieldset>
                 
+               
+                    
+                    <p><label class="labelReg" for="search">Pretraži: </label>
+                <input class="inputReg" type="text" id="search" name="search" placeholder="Pretraživanje" >                             
+                <label class="labelReg" for="noItems">Broj podataka: </label>
+                    <select class="inputReg" name="noItems" id="noItems" placeholder="Broj podataka">
+                    
+                        
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        
+                                        
+                        
+                    </select>
+                <input type="button" id ="refresh" name="refresh" onclick="reSort()" value="Osvježi"><br>
+                <div id="tableThings"></div><br>
+                <div id="menuThings"></div>
+                    
+               
+                
             </form>
             
              
                 </div>
          
         
-        <footer>
-             
-        </footer> 
+      
     </body>
 </html>
