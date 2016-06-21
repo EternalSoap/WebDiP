@@ -15,7 +15,7 @@ function rePage(event){
     
     
     
-    var query = 'select * from Korisnik';
+    
     var numItems = $("#noItems").val();
     
     
@@ -23,8 +23,8 @@ function rePage(event){
     var search = '';
     var first = event.data.page * numItems;
     
-    getData(query,numItems,order,sort,search,first,generateTable);
-    getNumRows('Korisnik',numItems,generatePaging);
+    getData(window.query,numItems,order,sort,search,first,generateTable);
+    getNumRows(window.table,numItems,generatePaging);
     
 }
 
@@ -75,8 +75,8 @@ function reSort(event)
     var search = $("#search").val();
     var first = 0;
      
-    getData(query,numItems,order,sort,search,first,generateTable);
-    getNumRows('Korisnik',numItems,generatePaging);
+    getData(window.query,numItems,order,sort,search,first,generateTable);
+    getNumRows(window.table,numItems,generatePaging);
     
 }
 
@@ -193,7 +193,10 @@ function getNumRows(table,numItems,$callback)
 
 $(document).ready(function(){
      
-    var query = 'select * from Korisnik';
+     
+    window.query = 'select * from Korisnik';
+    window.table = 'Korisnik';
+    
     var numItems = $("#noItems").val();
     
     var order = '1';
@@ -208,7 +211,7 @@ $(document).ready(function(){
         type: 'post',
         datatype: 'json',
         data:{func:'getTableData',
-             query:query,
+             query:window.query,
               numItems:numItems,
                order:order,
                 sort:sort,
@@ -236,7 +239,7 @@ $(document).ready(function(){
      
     
     
-    getData(query,numItems,order,sort,search,first,generateTable);
-    getNumRows('Korisnik',numItems,generatePaging);
+    getData(window.query,numItems,order,sort,search,first,generateTable);
+    getNumRows(window.table,numItems,generatePaging);
     
 });

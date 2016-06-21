@@ -1,7 +1,6 @@
-$(document).ready()
-{
-
-$.ajax({
+$(document).ready(function(){
+    
+    $.ajax({
     url:'./odjava.php',
     type:'post',
     dataType:'json',
@@ -43,4 +42,8 @@ function display($data)
     }
 }
     
-}
+    
+});
+
+
+

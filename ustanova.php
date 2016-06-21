@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
-        
+        <script src="./js/crud.js"></script>
         
         
         
@@ -26,10 +26,33 @@
         
         
         
-        <div class="divReplacableContent" id="divContent">
+        <div class="divReplacableContent" id="divAdminContent" >
+            <form name="frmKreirajUstanovu" id='frmKreirajUstanovu' action='ustanova.php' method="post">
+            <fieldset id='kreiranjeUstanove'>
+                
+                <label>Kreiranje ustanove</label><br><br>
+                <label>Naziv</label> <input type="text" name="naziv"><br>
+                <label>Opis</label> <input type="text" name ="opis"><br>
+                <input type="submit" value="Dodaj ustanovu">
+                
+                
+                
+            </fieldset>
+            </form>
             
-           
-            <p>TEST</p>
+            <form action="ustanova.php" method='post' id='frmDodajModeratora'>
+                <fieldset>
+                    
+                    
+                    <label>Dodavanje moderatora</label>
+                    <select id='selectUstanova'></select> &nbsp; <select id='selectKorisnik'></select>
+                    <input type='submit' value='Dodaj moderatora'>
+                    
+                    
+                </fieldset>
+            </form>
+            
+            
             
             </div>
                 

@@ -5,6 +5,49 @@ include 'baza_class.php';
 include 'fileStuff.php';
 include 'Dnevnik.php';
 
+function genericInsert($query)
+{
+    $db = new DataBase();
+    $db->dbConnect();
+    dnevnik($query,'Dohvaćanje podataka jquery');
+    $result = $db->dbQuery($query);
+    
+    if($result)
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje uspješno');
+        echo json_encode('1');
+    }
+    else
+    {
+        $db ->dbDisconnect();
+        dnevnik($query,'Brisanje neuspješno');
+        echo json_encode('0');
+    }
+    
+    
+    
+}
+
+function genericSelect($query)
+{
+    $db = new DataBase();
+    $db->dbConnect();
+    
+    $result = $db->dbSelect($query);
+    dnevnik($query,'Dohvaćanje podataka jquery');
+    $array_result = [];
+    
+    while($row = $result->fetch_assoc())
+    {
+        array_push($array_result,$row);
+    }
+    $db->dbDisconnect();
+    echo json_encode($array_result);
+    
+    
+}
+
 //order je ime stupca po kojem se sortira, sort je 0(asc) ili 1(desc)
 function getTableData($query,$numItems,$order,$sort,$search,$first)
 {
@@ -172,7 +215,7 @@ function insert($table, $data_array)
         
     }
     $query.=");";
-    echo $query;
+    
     
     $db = new DataBase();
     $db ->dbConnect();
@@ -194,27 +237,20 @@ function insert($table, $data_array)
     
 }
 
-function update($id, $data,$table)
+function update($id, $data,$table,$column)
 {
     $headers = getHeaders($table);
     $query = "update ".$table." set ";
-    for($i=0;$i<count($headers)-1;$i++)
+    
+    foreach($headers as $header)
     {
-        if($i+2 === count($headers))
+        if($header === $column)
         {
-            $query.=$headers[$i+1]." = "."'".$data[$i]."'". " ";
+            $query.=$header." = "."'".$data."'". " ";
         }
-        else
-        {
-            $query.=$headers[$i+1]." = "."'".$data[$i]."'". ", ";
-        }
-       
-        echo $headers[$i];
-        echo $data[$i];
-        
     }
     $query.="where id".$table." = '".$id."';";
-    echo '<br>'.$query;
+   
     $db = new DataBase();
     $db->dbConnect();
     $result = $db->dbQuery($query);
@@ -235,7 +271,6 @@ function update($id, $data,$table)
 }
 
 
-function insertWeak(){}
 function deleteWeak($table,$linkedTable1,$linkedTable2,$id1,$id2)
     {
         $query = "delete from $table where ".$linkedTable1."_id".$linkedTable1." = ".$id1. " and ".$linkedTable2."_id".$linkedTable2." = ".$id2.";";
@@ -292,9 +327,9 @@ if(isset($_POST['func']))
     }
     if($func ==='update')
     {
-        if(isset($_POST['table']) && isset($_POST['id']) && isset($_POST['data']))
+        if(isset($_POST['table']) && isset($_POST['id']) && isset($_POST['data']) && isset($_POST['column']))
         {
-            update($_POST['id'], $_POST['data'], $_POST['table']);
+            update($_POST['id'], $_POST['data'], $_POST['table'],$_POST['column']);
         }
     }
     if($func ==='delete')
@@ -314,6 +349,21 @@ if(isset($_POST['func']))
         if(isset($_POST['table']) && isset($_POST['linkedTable1']) && isset($_POST['linkedTable2']) && isset($_POST['id1']) && isset($_POST['id2']))
         {
             deleteWeak($_POST['table'],$_POST['linkedTable1'],$_POST['linkedTable2'],$_POST['id1'],$_POST['id2']);
+        }
+    }
+    if($func ==='genericSelect')
+    {
+        if(isset($_POST['query']))
+        {
+            genericSelect($_POST['query']);
+        }
+    }
+    
+    if($func === 'genericInsert')
+    {
+        if(isset($_POST['query']))
+        {
+            genericInsert($_POST['query']);
         }
     }
     
